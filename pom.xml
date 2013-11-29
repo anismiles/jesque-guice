@@ -22,6 +22,11 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
+    <scm>
+        <url>git@github.com:anismiles/jesque-guice.git</url>
+        <connection>scm:git@github.com:anismiles/jesque-guice.git</connection>
+        <developerConnection>scm:git@github.com:anismiles/jesque-guice.git</developerConnection>
+    </scm>
 	<issueManagement>
 		<system>github</system>
 		<url>https://github.com/anismiles/jesque-guice/issues</url>
@@ -61,4 +66,12 @@
 			<version>1.3.6-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
+
+    <!-- Sonatype repo submission stuff -->
+    <parent>
+            <groupId>org.sonatype.oss</groupId>
+            <artifactId>oss-parent</artifactId>
+            <version>7</version>
+    </parent>
+
 </project>
