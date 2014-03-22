@@ -1,14 +1,5 @@
 package com.strumsoft.commons.jesque;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
-import net.greghaines.jesque.worker.WorkerEvent;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.inject.AbstractModule;
 import com.google.inject.Injector;
 import com.google.inject.Provider;
@@ -18,6 +9,13 @@ import com.google.inject.matcher.AbstractMatcher;
 import com.google.inject.spi.InjectionListener;
 import com.google.inject.spi.TypeEncounter;
 import com.google.inject.spi.TypeListener;
+import net.greghaines.jesque.worker.WorkerEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Loads/Discovers relevant classes
@@ -108,7 +106,7 @@ public class JesqueModule extends AbstractModule {
                             while (count > 0) {
                                 GuiceAwareWorker worker = factoryProvider.get().create(job,
                                         runnable.getClass(), Arrays.asList(queues));
-                                worker.addListener(injectorProvider.get().getInstance(ann.listener()), events);
+                                worker.getWorkerEventEmitter().addListener(injectorProvider.get().getInstance(ann.listener()), events);
                                 worker.init();
                                 count--;
                             }
